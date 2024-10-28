@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - JoyfulBox</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #343a40;
+            font-weight: 700;
+        }
+
+        p {
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            transition: background-color 0.3s;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background-color: #343a40;
+        }
+
+        .navbar .nav-link {
+            color: white;
+            padding: 15px 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107;
+        }
+
+        .nav-item {
+            margin-left: 20px;
+        }
+
+
+        .section {
+            padding: 60px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section {
+            background-color: #ffffff;
+        }
+
+        .featured-section {
+            background-color: #e9ecef;
+        }
+
+        .articles-section,
+        .testimonials-section {
+            background-color: #ffffff;
+        }
+
+        /* Social Media */
+        .social-icons a {
+            margin: 0 15px;
+            color: #ffc107;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        .blockquote-footer {
+            background-color: #343a40;
+            color: white;
+            margin-top: 10px;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-info h5 {
+            color: #ffc107;
+        }
+
+        .footer-section h5 {
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            font-weight: 700;
+            border-bottom: 2px solid #ffc107;
+            background-color: rgba(255, 193, 7, 0.2);
+            border-radius: 5px;
+            padding: 12px 20px;
+            transition: background-color 0.3s, color 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link.active:hover {
+            background-color: rgba(255, 193, 7, 0.3);
+            color: #ffffff;
+        }
+
+        .sharp-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            filter: contrast(1.2) brightness(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 20px;
+        }
+
+        .sharp-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-us {
+            background: linear-gradient(135deg, #f0f4c3, #e8eaf6);
+            padding: 60px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+
+        }
+
+        .about-us:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            color: #5d4037;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .about-description {
+            font-family: 'Volkhov', serif;
+            font-size: 24px;
+            color: #424242;
+            line-height: 1.6;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+
+        }
+
+
+        .about-us:hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            z-index: 0;
+            transition: all 0.3s ease;
+
+        }
+
+        .about-us::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 15px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-item {
+                margin-left: 10px;
+            }
+
+            header {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">JoyfulBox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" id="home" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" id="products" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" id="custom-gifts" href="custom-gifts.html">Custom Gifts</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" id="about" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" id="contact" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" id="login" href="#">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container py-5 about-section">
+        <div class="about-us">
+            <h1 class="text-center mb-4 about-title">About Us</h1>
+            <p class="text-center lead about-description">At JoyfulBox, we believe in the power of thoughtful gifting.
+                Our mission is to provide unique and customizable gift solutions for every occasion.</p>
+        </div>
+
+
+        <div class="row mt-5">
+            <div class="col-lg-6 mb-4">
+                <h2>Our Story</h2>
+                <p>JoyfulBox was founded with a simple idea: to make gifting easier and more meaningful. We understand
+                    that every occasion is special, and we aim to help you express your feelings through personalized
+                    gifts. Whether it's a birthday, anniversary, or just a way to say "I care," our curated gift boxes
+                    are designed to bring joy to your loved ones.</p>
+                <p>Our journey began in 2020, and since then, we've been dedicated to crafting delightful experiences
+                    for our customers. Our team works tirelessly to source the best products and ensure timely delivery,
+                    so you can focus on creating memories.</p>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <img class="sharp-image"
+                    src="https://img.freepik.com/premium-photo/christmas-tree-with-presents-gifts-background-lights_221128-32044.jpg">
+
+            </div>
+        </div>
+
+        <div class="row mt-5 align-items-center">
+
+            <div class="col-lg-6 mb-4">
+                <img src="https://www.ujalaskincare.com/cdn/shop/products/IMG_8058_750x.jpg?v=1651485981"
+                    class="sharp-image" alt="Gift Box">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <h2>Our Mission</h2>
+                <p>Our mission is to deliver joy through personalized gifts that bring smiles to people’s faces. We
+                    strive to ensure that each gift box is filled with high-quality products that are carefully selected
+                    to meet our customers' needs.</p>
+                <p>We believe that a thoughtful gift can create unforgettable moments, and we are here to help you
+                    create those moments with ease.</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-12 mb-4">
+                <h2>Our Values</h2>
+                <p>At JoyfulBox, we are committed to:</p>
+                <ul>
+                    <li><strong>Quality:</strong> We only source products that meet our high standards.</li>
+                    <li><strong>Customization:</strong> Every gift box can be tailored to fit the recipient’s
+                        preferences.</li>
+                    <li><strong>Customer Satisfaction:</strong> Your happiness is our top priority.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-5 align-items-center">
+            <div class="col-lg-6 mb-4">
+                <h2>Join Us on Our Journey</h2>
+                <p>We invite you to explore our collection and discover the perfect gift for your loved ones. Follow us
+                    on social media for the latest updates, promotions, and gifting ideas. Thank you for being a part of
+                    the JoyfulBox family!</p>
+                <a href="products.html" class="btn btn-warning btn-lg">Explore Our Products</a>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <img src="https://fullfocus.co/wp-content/uploads/2017/11/celebration-1920.jpg" class="sharp-image"
+                    alt="Celebration">
+            </div>
+        </div>
+
+        <div class="row text-center mt-5">
+            <div class="col-lg-12">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial mt-4">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">“JoyfulBox made my sister's birthday so special! The personalized touch was just
+                            perfect.”</p>
+                        <div class="blockquote-footer">Emily R. <cite title="Source Title">Happy Customer</cite>
+                        </div>
+                    </blockquote>
+                </div>
+                <div class="testimonial mt-4">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">“I ordered a gift box for my mom, and she loved every item inside! Highly
+                            recommend!”</p>
+                        <div class="blockquote-footer">James L. <cite title="Source Title">Happy Customer</cite>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-info">
+            <div class="row">
+                <div class="col-lg-4 footer-section">
+                    <h5>About Us</h5>
+                    <p>JoyfulBox is dedicated to providing the best gifting experience possible. We curate quality
+                        products and ensure timely delivery.</p>
+                </div>
+                <div class="col-lg-4 footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 footer-section">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@JoyfulBox.com</p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center py-4">
+            <p>&copy; 2024 JoyfulBox. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Add scroll event to change navbar style
+        window.onscroll = function () {
+            var navbar = document.querySelector('.navbar');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+    </script>
+</body>
+
+</html>
