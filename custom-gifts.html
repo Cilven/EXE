@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./White and Blue Modern Gift Logo.png" type="image/png"> 
+    <title>JoyfulBox - Custom Gift Creation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #343a40;
+            font-weight: 700;
+        }
+
+        p {
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            transition: background-color 0.3s;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background-color: #343a40;
+        }
+
+        .navbar .nav-link {
+            color: white;
+            padding: 15px 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107;
+        }
+
+        .nav-item {
+            margin-left: 20px;
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            font-weight: 700;
+            border-bottom: 2px solid #ffc107;
+            background-color: rgba(255, 193, 7, 0.2);
+            border-radius: 5px;
+            padding: 12px 20px;
+            transition: background-color 0.3s, color 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 60px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section {
+            background-color: #ffffff;
+        }
+
+        .featured-section {
+            background-color: #e9ecef;
+        }
+
+        .articles-section,
+        .testimonials-section {
+            background-color: #ffffff;
+        }
+
+        /* Social Media */
+        .social-icons a {
+            margin: 0 15px;
+            color: #ffc107;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        .blockquote-footer {
+            background-color: #343a40;
+            color: white;
+            margin-top: 10px;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-info h5 {
+            color: #ffc107;
+        }
+
+        .footer-section h5 {
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+
+
+        .table {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .table th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .table td {
+            vertical-align: middle;
+            padding: 15px;
+            border: 1px solid #dddddd;
+            transition: background-color 0.2s;
+        }
+
+        .table tr:hover td {
+            background-color: #f8f9fa;
+        }
+
+        .table td input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .btn-danger {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            color: white;
+        }
+
+        .total-row {
+            font-weight: bold;
+            font-size: 1.25em;
+            background-color: #f9f9f9;
+        }
+
+        .checkout-btn {
+            background-color: #27ae60;
+            color: white;
+            font-size: 1.1em;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .checkout-btn:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+        }
+
+        .footer-info h5 {
+            color: #ffcf8b;
+        }
+
+        .footer-section h5 {
+            border-bottom: 2px solid #ffcf8b;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: #ffcf8b;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffffff;
+            transform: rotate(15deg);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar .nav-item {
+                margin-left: 10px;
+            }
+
+            .section {
+                padding: 30px 10px;
+            }
+        }
+
+        .logo {
+            width: 50px;
+            border-radius: 100%;
+            margin-right: 10px;
+        }
+
+        .product-card {
+            display: flex;
+            /* Sử dụng flexbox cho bố cục */
+            align-items: center;
+            /* Căn giữa các phần tử theo chiều dọc */
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            /* Thêm viền */
+            border-radius: 12px;
+            /* Bo góc cho viền */
+            overflow: hidden;
+            /* Đảm bảo các phần tử không vượt ra ngoài viền */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            /* Thêm đổ bóng */
+            transition: transform 0.3s, box-shadow 0.3s;
+            /* Hiệu ứng chuyển động khi hover */
+            padding: 15px;
+            /* Thêm khoảng cách bên trong thẻ */
+            background-color: white;
+            /* Màu nền cho thẻ sản phẩm */
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            /* Di chuyển lên nhẹ khi hover */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            /* Đổ bóng mạnh hơn khi hover */
+        }
+
+        .product-img {
+            width: 120px;
+            /* Tăng kích thước hình ảnh một chút */
+            height: 120px;
+            /* Cố định chiều cao cho hình ảnh */
+            object-fit: cover;
+            /* Giữ nguyên tỷ lệ khung hình */
+            border-radius: 8px;
+            /* Bo góc cho hình ảnh */
+            margin-right: 20px;
+            /* Thêm khoảng cách giữa hình và thông tin */
+        }
+
+        .product-description {
+            flex: 1;
+            /* Để phần mô tả chiếm toàn bộ chiều rộng còn lại */
+        }
+
+        .product-description p {
+            margin: 5px 0;
+            /* Thêm khoảng cách cho các đoạn văn bản */
+        }
+
+        .product-price {
+            font-weight: bold;
+            /* Vẫn giữ chữ đậm cho giá */
+            color: #3498db;
+            /* Màu xanh dương tươi sáng hơn */
+            font-size: 1.2em;
+            /* Kích thước chữ cho giá */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            /* Thêm bóng mờ để làm nổi bật hơn */
+        }
+
+        .product-quantity {
+            margin-top: 10px;
+            /* Thêm khoảng cách cho ô nhập số lượng */
+            padding: 5px;
+            /* Thêm padding cho ô nhập */
+            border: 1px solid #ccc;
+            /* Viền cho ô nhập */
+            border-radius: 4px;
+            /* Bo góc cho ô nhập */
+            width: 60px;
+            /* Đặt chiều rộng cố định cho ô nhập */
+            outline: none;
+            /* Xóa outline mặc định */
+        }
+
+        .product-quantity:focus {
+            border-color: #007bff;
+            /* Thay đổi màu viền khi ô nhập được chọn */
+        }
+
+
+        .product-container {
+            border-right: 1px solid #dee2e6;
+            padding-right: 20px;
+        }
+
+        .product-card {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh hình ảnh và thông tin */
+            align-items: center;
+            /* Căn giữa các phần tử theo chiều dọc */
+            border: 1px solid #ddd;
+            /* Viền nhẹ quanh card */
+            border-radius: 8px;
+            /* Bo tròn góc */
+            padding: 10px;
+            /* Padding cho card */
+            margin-bottom: 15px;
+            /* Khoảng cách giữa các card */
+            background-color: #f9f9f9;
+            /* Màu nền nhẹ nhàng */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Hiệu ứng chuyển tiếp cho transform và box-shadow */
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            /* Nâng card lên một chút khi hover */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng khi hover */
+        }
+
+        .gift-box-img {
+            width: 100px;
+            /* Chiều rộng cố định cho hình ảnh */
+            height: auto;
+            /* Chiều cao tự động */
+            border-radius: 8px;
+            /* Bo tròn góc cho hình ảnh */
+            margin-right: 15px;
+            /* Khoảng cách giữa hình ảnh và thông tin */
+            transition: transform 0.3s ease;
+            /* Hiệu ứng chuyển tiếp cho hình ảnh */
+        }
+
+        .gift-box-img:hover {
+            transform: scale(1.05);
+            /* Phóng to hình ảnh khi hover */
+        }
+
+        .product-description {
+            flex-grow: 1;
+            /* Để mô tả chiếm không gian còn lại */
+        }
+
+        .product-price {
+            font-weight: bold;
+            /* Đậm chữ giá */
+            color: #3498db;
+            /* Màu xanh dương cho giá */
+            font-size: 1.1em;
+            /* Kích thước chữ cho giá */
+            transition: color 0.3s ease;
+            /* Hiệu ứng chuyển tiếp cho màu giá */
+        }
+
+        .product-price:hover {
+            color: #2980b9;
+            /* Đổi màu giá khi hover */
+        }
+
+        input[type="radio"] {
+            margin-left: 5px;
+            /* Khoảng cách giữa nhãn và radio button */
+            transition: transform 0.2s ease;
+            /* Hiệu ứng chuyển tiếp cho radio button */
+        }
+
+        input[type="radio"]:hover {
+            transform: scale(1.1);
+            /* Phóng to radio button khi hover */
+        }
+
+        .custom-message {
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .selected-summary {
+            margin-top: 20px;
+            border: 1px solid #28a745;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #e9fce9;
+        }
+
+        .selected-summary h5 {
+            margin-bottom: 15px;
+        }
+
+        .next {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .modal {
+            display: none;
+            /* Ẩn modal theo mặc định */
+            position: fixed;
+            /* Đặt modal ở vị trí cố định */
+            z-index: 1;
+            /* Đặt z-index cao hơn để nó nằm trên các phần tử khác */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Chiếm toàn bộ chiều rộng */
+            height: 100%;
+            /* Chiếm toàn bộ chiều cao */
+            overflow: auto;
+            /* Bật cuộn nếu cần */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Nền tối cho modal */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* Căn giữa modal */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Chiều rộng của modal */
+            border-radius: 8px;
+            /* Bo tròn góc */
+        }
+
+        .close {
+            color: #aaa;
+            /* Màu chữ của nút đóng */
+            float: right;
+            /* Đặt nút đóng ở góc phải */
+            font-size: 28px;
+            /* Kích thước chữ cho nút đóng */
+            font-weight: bold;
+            /* Đậm chữ cho nút đóng */
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            /* Đổi màu khi hover */
+            text-decoration: none;
+            /* Không có gạch chân */
+            cursor: pointer;
+            /* Con trỏ chuột thay đổi khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container-fluid">
+            <img class="logo" src="./White and Blue Modern Gift Logo.png" alt="">
+            <a class="navbar-brand" href="index.html">JoyfulBox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="custom-gifts.html">Custom Gifts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Create Your Custom Gift</h1>
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" id="step1-tab" data-bs-toggle="tab" href="#step1">Step 1: Select Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="step2-tab" data-bs-toggle="tab" href="#step2">Step 2: Select Gift Box</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="step3-tab" data-bs-toggle="tab" href="#step3">Step 3: Add Personal Message</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="step1">
+                <div class="row">
+                    <div class="col-md-6 product-container">
+                        <h3>Select Products</h3>
+                        <div class="product-card">
+                            <img src="https://bmppack.com/wp-content/uploads/2023/11/bao-bi-do-an-vat-2.jpg"
+                                alt="Product 1" class="product-img">
+                            <div class="product-description">
+                                <p>Bla bla</p>
+                                <p class="product-price">Price: $10</p>
+                                <label for="product1-quantity">Quantity:</label>
+                                <input type="number" value="0" min="0" id="product1-quantity" class="product-quantity"
+                                    onchange="updateSelectedProducts()">
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://cdn-merchant.vinid.net/images/image_upload_1687116732_do-an-vat-ban-chay-nhat-1.jpg"
+                                alt="Product 2" class="product-img">
+                            <div class="product-description">
+                                <p>PPotato</p>
+                                <p class="product-price">Price: $15</p>
+                                <label for="product2-quantity">Quantity:</label>
+                                <input type="number" value="0" min="0" id="product2-quantity" class="product-quantity"
+                                    onchange="updateSelectedProducts()">
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://jamayfood.com/wp-content/uploads/2022/02/11.jpg" alt="Product 3"
+                                class="product-img">
+                            <div class="product-description">
+                                <p>?????????????????</p>
+                                <p class="product-price">Price: $20</p>
+                                <label for="product3-quantity">Quantity:</label>
+                                <input type="number" value="0" min="0" id="product3-quantity" class="product-quantity"
+                                    onchange="updateSelectedProducts()">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Selected Products</h3>
+                        <div id="selected-products" class="selected-summary">
+                            <h5>No products selected yet.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary next" onclick="goToStep(2)">Next Step</button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="step2">
+                <div class="row">
+                    <div class="col-md-6 product-container">
+                        <h3>Select Gift Box</h3>
+                        <div class="product-card">
+                            <img src="https://insieutoc.vn/wp-content/uploads/2021/12/mau-hop-nap-gai.jpg"
+                                alt="Gift Box 1" class="gift-box-img">
+                            <div class="product-description">
+                                <p style="font-weight: bold;">Gift Box 1</p>
+                                <p class="product-price">Price: $5</p>
+                                <label>
+                                    <input type="radio" name="giftBox" value="Gift Box 1"
+                                        onchange="updateSelectedGiftBox('Gift Box 1')"> Select
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://intphcm.com/data/upload/mau-hop-giay-am-duong.jpg" alt="Gift Box 2"
+                                class="gift-box-img">
+                            <div class="product-description">
+                                <p style="font-weight: bold;">Gift Box 2</p>
+                                <p class="product-price">Price: $7</p>
+                                <label>
+                                    <input type="radio" name="giftBox" value="Gift Box 2"
+                                        onchange="updateSelectedGiftBox('Gift Box 2')"> Select
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Selected Gift Box</h3>
+                        <div id="selected-gift-box" class="selected-summary">
+                            <h5>No gift box selected yet.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-secondary next" onclick="goToStep(1)">Previous Step</button>
+                    <button class="btn btn-primary next" onclick="goToStep(3)">Next Step</button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="step3">
+                <h3>Add a Personal Message</h3>
+                <textarea class="form-control custom-message" rows="4" id="personal-message"
+                    placeholder="Write your message here..."></textarea>
+                <div class="text-center mt-3">
+                    <button class="btn btn-secondary next" onclick="goToStep(2)">Previous Step</button>
+                    <button class="btn btn-success next" onclick="submitGift()">Submit Gift</button>
+                </div>
+            </div>
+            <div id="giftModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Gift Submission</h2>
+                    <div id="modal-message"></div>
+                    <button onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-info">
+            <div class="row">
+                <div class="col-lg-4 footer-section">
+                    <h5>About Us</h5>
+                    <p>JoyfulBox is dedicated to providing the best gifting experience possible. We curate quality
+                        products and ensure timely delivery.</p>
+                </div>
+                <div class="col-lg-4 footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/people/Joyful-Box/100086913023201/"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.tiktok.com/@joyful.box1?_r=1&_d=secCgYIASAHKAESPgo87BHbyXWBdKTrdOlEx0hIS%2BG1LEk7CEaQJ9pnpyx%2BflMo2ogCr23NaWp2hcm%2B81YC3GOnVkElwitIHLq1GgA%3D&checksum=54b359d9a737dd7b138912e9687d3a1f974ab564ab22b203f1e258ca609a4cb3&sec_uid=MS4wLjABAAAA0FFiIPCj2VOUrZ7ENOromtCHh9JSp9zfBPZ5XHqLzmYAgPqO79f90W3b86qc8GYP&sec_user_id=MS4wLjABAAAA0FFiIPCj2VOUrZ7ENOromtCHh9JSp9zfBPZ5XHqLzmYAgPqO79f90W3b86qc8GYP&share_app_id=1180&share_author_id=7393356500091307014&share_link_id=EB95AB2A-7B63-4BC4-B4EE-182E00946D7E&sharer_language=vi&social_share_type=4&source=h5_t&timestamp=1730379310&tt_from=copy&u_code=ef8c4g3gkfg6h8&ug_btm=b8727%2Cb0&user_id=7393356500091307014&utm_campaign=client_share&utm_medium=ios&utm_source=copy"
+                            target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 footer-section">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@joyfulbox.com</p>
+                    <p>Phone: +123 456 7890</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2024 JoyfulBox. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const selectedProducts = [];
+        const selectedGiftBox = {
+            name: null,
+            price: 0
+        };
+    
+        function updateSelectedProducts() {
+            const products = [
+                { id: 'product1', name: 'Product 1', price: 10 },
+                { id: 'product2', name: 'Product 2', price: 15 },
+                { id: 'product3', name: 'Product 3', price: 20 }
+            ];
+            selectedProducts.length = 0;
+    
+            products.forEach(product => {
+                const quantity = parseInt(document.getElementById(`${product.id}-quantity`).value, 10) || 0; // Chuyển đổi thành số
+                if (quantity > 0) {
+                    selectedProducts.push({
+                        name: product.name,
+                        quantity: quantity,
+                        price: product.price,
+                        total: product.price * quantity // Tính tổng cho từng sản phẩm
+                    });
+                }
+            });
+    
+            displaySelectedProducts();
+        }
+    
+        function displaySelectedProducts() {
+            const selectedProductsDiv = document.getElementById('selected-products');
+            selectedProductsDiv.innerHTML = '';
+    
+            if (selectedProducts.length === 0) {
+                selectedProductsDiv.innerHTML = '<h5>No products selected yet.</h5>';
+            } else {
+                selectedProducts.forEach(product => {
+                    selectedProductsDiv.innerHTML += `<p>${product.name} - Quantity: ${product.quantity} - Total: $${product.total.toFixed(2)}</p>`;
+                });
+            }
+        }
+    
+        function updateSelectedGiftBox(giftBox) {
+            selectedGiftBox.name = giftBox;
+            const giftBoxPrice = giftBox.includes('1') ? 5 : 7; // Điều chỉnh giá hộp quà
+            selectedGiftBox.price = giftBoxPrice;
+            displaySelectedGiftBox();
+        }
+    
+        function displaySelectedGiftBox() {
+            const selectedGiftBoxDiv = document.getElementById('selected-gift-box');
+            selectedGiftBoxDiv.innerHTML = '';
+    
+            if (selectedGiftBox.name) {
+                selectedGiftBoxDiv.innerHTML = `<p>${selectedGiftBox.name} - Price: $${selectedGiftBox.price}</p>`;
+            } else {
+                selectedGiftBoxDiv.innerHTML = '<h5>No gift box selected yet.</h5>';
+            }
+        }
+    
+        function goToStep(step) {
+            const tab = new bootstrap.Tab(document.getElementById(`step${step}-tab`));
+            tab.show();
+        }
+    
+        function submitGift() {
+            const message = document.getElementById('personal-message').value;
+    
+            // Tính tổng số tiền cần trả
+            const totalAmount = selectedProducts.reduce((total, product) => {
+                const quantity = Number(product.quantity) || 0; // Đảm bảo quantity là số
+                return total + (product.price * quantity); // Cộng dồn vào tổng
+            }, 0);
+    
+            // Tạo danh sách sản phẩm với số lượng
+            const productsList = selectedProducts.map(product =>
+                `<li>${product.name} - Quantity: ${product.quantity} - Total: $${product.total.toFixed(2)}</li>`
+            ).join('');
+    
+            // Tạo nội dung cho modal
+            const modalMessage = `
+                <p><strong>Products:</strong></p>
+                <ul>${productsList}</ul>
+                <p><strong>Gift Box:</strong> ${selectedGiftBox.name} - Price: $${selectedGiftBox.price}</p>
+                <p><strong>Message:</strong> ${message}</p>
+                <p><strong>Total Amount:</strong> $${(totalAmount + selectedGiftBox.price).toFixed(2)}</p>
+            `;
+    
+            // Hiển thị nội dung trong modal
+            document.getElementById('modal-message').innerHTML = modalMessage;
+    
+            // Hiện modal
+            document.getElementById('giftModal').style.display = "block";
+        }
+    
+        // Hàm đóng modal
+        function closeModal() {
+            document.getElementById('giftModal').style.display = "none";
+        }
+    
+        // Để đóng modal khi nhấn vào bất kỳ đâu bên ngoài modal
+        window.onclick = function (event) {
+            const modal = document.getElementById('giftModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    
+</body>
+
+</html>
